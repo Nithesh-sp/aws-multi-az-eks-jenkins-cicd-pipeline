@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(135deg, #04db65, #04d8db);
+            color: #fff;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            background-color: #fff;
+            margin: 5px;
+            margin-right: 20px;
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+        }
+
+        .hamburger {
+            float: right;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .bar {
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+
+        .change .bar:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .change .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .change .bar:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        .sidenav {
+            width: 200px;
+            height: 100%;
+            position: fixed;
+            top: 100px;
+            right: -200px;
+            background: #fff;
+            transition: 0.4s;
+           
+        }
+
+        .sidenav div {
+            display: block;
+            
+            padding: 10px 0;
+        }
+
+        .sidenav div a {
+            font-size: 20px;
+            text-decoration: none;
+            display: block;
+            width: max-content;
+            border-radius: 6px;
+            padding: 5px 5px;
+            color: black;
+        }
+
+        .sidenav div a:hover {
+            background: linear-gradient(135deg, #04db65, #04d8db);
+            color: #fff;
+        }
+
+        .slide {
+            right: 0;
+        }
+</style>
+<body>
+    <header>
+        <a href="#"><img src="{% static 'images/Dailelogo.png' %}" alt="Company Logo" class="logo"></a>
+
+        <div class="hamburger" onclick="toggleNav()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <div class="sidenav">
+        <div><a href="#">Your Profile</a></div>
+        <div><a href="#">Place Order</a></div>
+        <div><a href="#">About</a></div>
+    </div>
+
+  
+    <script>
+        function toggleNav() {
+            var hamburger = document.querySelector(".hamburger");
+            hamburger.classList.toggle("change");
+            slideNav();
+        }
+
+        function slideNav() {
+            var sidenav = document.querySelector(".sidenav");
+            sidenav.classList.toggle("slide");
+        }
+    </script>
+      {% block content %}
+      {% endblock content %}
+</body>
+</html>

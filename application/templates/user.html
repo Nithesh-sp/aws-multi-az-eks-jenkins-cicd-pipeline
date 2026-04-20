@@ -1,0 +1,215 @@
+ <!DOCTYPE html>
+ {% load static %}
+ <html>
+ <head>
+     <title>User Info</title>
+     <style>
+         @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+           body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cabin', sans-serif;
+        }
+
+        header {
+            background: linear-gradient(135deg, #04db65, #04d8db);
+            color: #fff;
+            padding: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+        }
+
+        .logo {
+            background-color: #fff;
+            margin: 5px;
+            margin-right: 20px;
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+        }
+
+        .hamburger {
+            float: right;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .bar {
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+            margin: 4px 0;
+            transition: 0.4s;
+        }
+
+        .change .bar:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .change .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .change .bar:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        .sidenav {
+            width: 200px;
+            height: 100%;
+            position: fixed;
+            top: 100px;
+            right: -200px;
+            background: #fff;
+            transition: 0.4s;
+           
+        }
+
+        .sidenav div {
+            display: block;
+            
+            padding: 10px 0;
+        }
+
+        .sidenav div a {
+            font-size: 20px;
+            text-decoration: none;
+            display: block;
+            width: max-content;
+            border-radius: 6px;
+            padding: 5px 5px;
+            color: black;
+        }
+
+        .sidenav div a:hover {
+            background: linear-gradient(135deg, #04db65, #04d8db);
+            color: #fff;
+        }
+
+        .slide {
+            right: 0;
+        }
+
+        .user-card {
+            height: 500px;
+            width: 350px;
+            background: linear-gradient(135deg, #04db65, #04d8db);
+            color: #fff;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            border-radius: 30px;
+            overflow: hidden;
+            text-align: center;
+            margin: auto;
+        }
+
+        .user-logo {
+            margin-top: 10px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+           
+            margin-bottom: 70px;
+        }
+
+        .user-info {
+            padding: 20px;
+        }
+
+        .user-name {
+           
+            margin-bottom: 20px;
+            color: black;
+        }
+
+        .user-address {
+           
+            height: 50px;
+            margin-left: 5px;
+           
+            overflow: scroll;
+            margin-bottom: 20px;
+            color: black;
+        }
+        ::-webkit-scrollbar{
+            width: 0px;
+            height: 0px;
+            
+        }
+        .user-phone {
+            font-size: 16px;
+            margin-bottom: 10px;
+            overflow: hidden;
+           
+            color: black;
+        }
+
+        .user-label {
+            font-size: 20px ;
+            color: #fff;
+            font-weight: bolder;
+            float: left;
+        }
+
+        
+     </style>
+ </head>
+ <body>
+    <header>
+        <a href="{% url 'home' %}"><img src="{% static 'images/Dailelogo.png' %}" alt="Company Logo" class="logo"></a>
+
+        <div class="hamburger" onclick="toggleNav()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <div class="sidenav">
+        <div><a href="{% url 'user_page' %}">Your Profile</a></div>
+        <div><a href="{% url 'order_entry' %}">Place Order</a></div>
+        <div><a href="#">About</a></div>
+    </div>
+
+
+
+
+     <div class="user-card">
+       <a href=""> <img class="user-logo" src="{% static 'images/userlogo.png' %}" alt=""></a>
+        
+         <div class="user-info">
+            <span class="user-label">Username:</span>
+             <div class="user-name">
+                 {{ user.username }}
+             </div>
+             
+             <span class="user-label">Address:</span>
+             <div class="user-address">
+                {{ user.account.address }}
+             </div>
+             
+             <span class="user-label">Phone:</span>
+             <div class="user-phone">
+                  {{ user.email }}
+             </div>
+         </div>
+     </div>
+
+     <script>
+        function toggleNav() {
+            var hamburger = document.querySelector(".hamburger");
+            hamburger.classList.toggle("change");
+            slideNav();
+        }
+
+        function slideNav() {
+            var sidenav = document.querySelector(".sidenav");
+            sidenav.classList.toggle("slide");
+        }
+    </script>
+ </body>
+ </html>
+ 

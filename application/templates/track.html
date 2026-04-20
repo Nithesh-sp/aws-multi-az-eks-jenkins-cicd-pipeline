@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cabin', sans-serif;
+        }
+
+        nav {
+        background: linear-gradient(135deg, #04db65, #04d8db);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+     margin-bottom: 50px;
+      padding: 10px;
+      
+    }
+
+    nav a {
+      text-decoration: none;
+      color:#fff;
+      padding: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    nav a:hover {
+      transform: scale(1.5);
+    }
+
+    .logo {
+      margin-right: auto;
+      background-color: #fff;
+            margin: 5px;
+            margin-right: 20px;
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            cursor: pointer;
+    }
+
+    .links {
+      margin-left:0px 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 2;
+    }
+    
+    .links a {
+      margin-left: 10px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    .right-links {
+      margin-left: auto;
+      cursor: pointer;
+      
+   }
+
+    .right-links a {
+      margin-left: 5px;
+      margin-right: 5px;
+      color:#fff;
+      border-radius: 30px;      
+      transition: transform 0.3s ease;
+    }
+
+    .right-links a:hover {
+        box-shadow: 0px 0px 5px black;
+        transform: scale(1.5);
+        background-color: #04d8db;
+        color: #fff;
+    }
+
+
+
+
+
+     .rectangle-box {
+            width: auto; /* Adjust the width as needed */
+            height: 100px; /* Adjust the height as needed */
+            border: 1px solid #ccc;
+            display: flex;
+            margin: 10%;
+            box-shadow: 0px 0px 10px rgb(166, 163, 163);
+        }
+
+        .section-1 {
+            width: 70%;
+            padding: 10px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .small-rectangle {
+            width:fit-content; /* Adjust the width of the small rectangle */
+            height:fit-content; /* Adjust the height of the small rectangle */
+            border:2px solid orange;
+            padding: 3px;
+            color: orange;
+            font-weight: bolder;
+            border-radius: 10px;
+            font-size: 10px;
+            
+        } 
+
+        .Order-Placed {
+            border:2px solid orange;
+            color: orange;
+        }
+
+        .Order-Accepted {
+            border:2px solid #04d8db;
+            color: #04d8db;
+        }
+
+        .Settled {
+            border:2px solid #04db65;
+            color: #04db65;
+        }
+
+        .text-down {
+            display: flex;
+            align-self:self-start;
+            margin-top: 15px;
+            font-size: 20px;
+            padding: 2px;
+        }
+
+        .order-placed-text {
+            font-size: 14px;
+            color: #333;
+        }
+
+        .section-2 {
+            width: fit-content;
+            background-color: #ede8e8;
+            color:#04db65;
+            padding: 15px;
+            box-sizing: border-box;
+            align-content: center;    
+        }
+        
+        .sec2-text {
+            color: black;
+            display: flex;
+            align-self: center;
+        }
+        .price-text {
+            font-size: 50px;
+            display: flex;
+            align-self: center;
+            align-items: baseline;
+            
+        }
+
+        .rs-text {
+            font-size: 25px;
+        }
+
+        .So_btn {
+        display: block;
+        margin: 20px auto; /* Center the button horizontally */
+        padding: 10px 20px;
+        background-color: #04db65; /* Green color */
+        color: #fff;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+       
+        transition: background-color 0.3s ease;
+    }
+    a {
+        text-decoration: none;
+    }
+   </style>
+
+
+</head>
+<body>
+    <nav>
+        <div >
+          <a href="{% url 'home' %}"><img src="{% static 'images/Dailelogo.png' %}" class="logo" alt="Logo" ></a>
+        </div>
+        
+        <div class="links">
+          <a href="{% url 'home' %}">Home</a>
+          <a href="{% url 'price_list' %}">Price</a>
+          <a href="{% url 'order_entry' %}">Place Order</a>
+          <a href="{% url 'task_page' %}">Track</a>
+          <a href="#">Partners</a>
+        </div>
+    
+        <div class="right-links">
+          <a href="#" >Sign Up</a>
+          <a href="#" >Login</a>
+        </div>
+      </nav>
+
+
+      {% if user.is_authenticated %}
+   {% for CustomerOrder in CustomerOrders %} 
+   <a href="{% url 'detailed_page' pk=CustomerOrder.pk %}"><div class="rectangle-box">
+    <div class="section-1">
+        <div class="small-rectangle {{ CustomerOrder.status }}">{{ CustomerOrder.status }}</div>
+        <div class="text-down">company: {{ CustomerOrder.companyName  }} , product: {{ CustomerOrder.product }}, quantity:{{ CustomerOrder.quantity }}</div>
+    </div>
+    <div class="section-2">
+        <div class="sec2-text">  your about to earn </div>
+        <div class="price-text"> <span class="rs-text">Rs</span>. {{ CustomerOrder.amount }}  </div>
+    </div>
+</div></a>
+    {% endfor %}
+
+    <a href="{% url 'ordered_page' %}"><button class="So_btn">Settled Orders</button></a>
+    {% else %}
+           <h2> Your not logined  to <a href="{% url 'signin' %}">LogIn</a> </h2>
+           {%  endif %}
+</body>
+</html>

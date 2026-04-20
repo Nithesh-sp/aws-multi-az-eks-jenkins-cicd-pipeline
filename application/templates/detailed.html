@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cabin', sans-serif;
+        }
+
+        nav {
+        background: linear-gradient(135deg, #04db65, #04d8db);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+     margin-bottom: 50px;
+      padding: 10px;
+      
+    }
+
+    nav a {
+      text-decoration: none;
+      color:#fff;
+      padding: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    nav a:hover {
+      transform: scale(1.5);
+    }
+
+    .logo {
+      margin-right: auto;
+      background-color: #fff;
+            margin: 5px;
+            margin-right: 20px;
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            cursor: pointer;
+    }
+
+    .links {
+      margin-left:0px 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 2;
+    }
+    
+    .links a {
+      margin-left: 10px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    .right-links {
+      margin-left: auto;
+      cursor: pointer;
+      
+   }
+
+    .right-links a {
+      margin-left: 5px;
+      margin-right: 5px;
+      color:#fff;
+      border-radius: 30px;      
+      transition: transform 0.3s ease;
+    }
+
+    .right-links a:hover {
+        box-shadow: 0px 0px 5px black;
+        transform: scale(1.5);
+        background-color: #04d8db;
+        color: #fff;
+    }
+
+        .main-container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            display: flex;
+            box-shadow: 0px 0px 10px rgb(166, 163, 163);
+        }
+
+        .tracking-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+            border-right: 1px solid rgb(44, 43, 43);
+            padding-right: 20px; /* Adjust padding as needed */
+        }
+
+        .tracking-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px auto 10px;
+        }
+
+        .step-number {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .step-text {
+            font-size: 14px;
+            color: #888;
+        }
+
+        .step-line {
+            width: 2px;
+            height: 30px;
+            background-color: #ddd;
+            margin: 0 auto;
+        }
+
+        .step-circle.active {
+            background-color: #04db65;
+            color: #fff;
+        }
+
+        .step-text.active {
+            color: #04db65;
+        }
+
+        .info-container {
+            flex: 1;
+            text-align: center;
+            padding-left: 20px; /* Adjust padding as needed */
+        }
+
+        .sec {
+            margin-bottom: 20px; /* Added spacing after each line */
+            
+        }
+
+        .sec h3,
+        .sec h4 {
+            float: left;
+            clear: left;
+            margin-bottom:10px;
+            padding: 0;
+        }
+
+        .sec p {
+            clear: left;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tracking-status {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .tracking-update {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div >
+          <a href="{% url 'home' %}"><img src="{% static 'images/Dailelogo.png' %}" class="logo" alt="Logo" ></a>
+        </div>
+        
+        <div class="links">
+          <a href="{% url 'home' %}">Home</a>
+          <a href="{% url 'price_list' %}">Price</a>
+          <a href="{% url 'order_entry' %}">Place Order</a>
+          <a href="{% url 'task_page' %}">Track</a>
+          <a href="#">Partners</a>
+        </div>
+    
+        <div class="right-links">
+          <a href="#" >Sign Up</a>
+          <a href="#" >Login</a>
+        </div>
+      </nav>
+
+{% if order.status.type == "Order-Placed" %}
+    <div class="main-container">
+        <div class="tracking-container">
+            <div class="tracking-step">
+                <div class="step-circle active">
+                    <div class="step-number">1</div>
+                </div>
+                <div class="step-text active">Order Placed</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="tracking-step">
+                <div class="step-circle">
+                    <div class="step-number">2</div>
+                </div>
+                <div class="step-text">Order Accepted</div>
+            </div>
+            <div class="step-line"></div>
+            <div class="tracking-step">
+                <div class="step-circle">
+                    <div class="step-number">3</div>
+                </div>
+                <div class="step-text">Settled</div>
+            </div>
+        </div>
+
+        <div class="info-container">
+             <div class="sec">
+                   <h3>{{ user.username }}</h3>
+                   <h3>{{ order.status }}</h3>
+             </div>
+             <div class="sec">
+                   <h4>Address:</h4>
+                   <p>{{ order.houseName }} {{ order.landmark }} {{ order.area }}  {{ order.city }} 
+                    {{ order.state }} {{ order.pincode }}
+                   </p>
+             </div>
+             <div class="sec">
+                    <h4>Company: {{ order.companyName }}</h4>
+                    <h4>Product: {{ order.product }}</h4>
+                    <h4>Quantity: {{ order.quantity }}</h4>
+                    <h4>Price: Rs {{ order.amount }} </h4>
+             </div>
+        </div>
+    </div>
+{% elif order.status.type == "Order-Accepted" %}
+
+<div class="main-container">
+    <div class="tracking-container">
+        <div class="tracking-step">
+            <div class="step-circle active">
+                <div class="step-number">1</div>
+            </div>
+            <div class="step-text active">Order Placed</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="tracking-step">
+            <div class="step-circle active">
+                <div class="step-number">2</div>
+            </div>
+            <div class="step-text active">Order Accepted</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="tracking-step">
+            <div class="step-circle ">
+                <div class="step-number">3</div>
+            </div>
+            <div class="step-text">Settled</div>
+        </div>
+    </div>
+
+    <div class="info-container">
+        <div class="sec">
+              <h3>{{ user.username }}</h3>
+        </div>
+        <div class="sec">
+              <h4>Address:</h4>
+              <p>{{ order.houseName }} {{ order.landmark }} {{ order.area }}  {{ order.city }} 
+               {{ order.state }} {{ order.pincode }}
+              </p>
+        </div>
+        <div class="sec">
+               <h4>Company: {{ order.companyName }}</h4>
+               <h4>Product: {{ order.product }}</h4>
+               <h4>Quantity: {{ order.quantity }}</h4>
+               <h4>Price: {{ order.amount }} Rs</h4>
+        </div>
+   </div>
+</div>
+{% else %}
+<div class="main-container">
+    <div class="tracking-container">
+        <div class="tracking-step">
+            <div class="step-circle active">
+                <div class="step-number">1</div>
+            </div>
+            <div class="step-text active">Order Placed</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="tracking-step">
+            <div class="step-circle active">
+                <div class="step-number">2</div>
+            </div>
+            <div class="step-text active">Order Accepted</div>
+        </div>
+        <div class="step-line"></div>
+        <div class="tracking-step">
+            <div class="step-circle active ">
+                <div class="step-number">3</div>
+            </div>
+            <div class="step-text active">Settled</div>
+        </div>
+    </div>
+
+    <div class="info-container">
+        <div class="sec">
+              <h3>{{ user.username }}</h3>
+        </div>
+        <div class="sec">
+              <h4>Address:</h4>
+              <p>{{ order.houseName }} {{ order.landmark }} {{ order.area }}  {{ order.city }} 
+               {{ order.state }} {{ order.pincode }}
+              </p>
+        </div>
+        <div class="sec">
+               <h4>Company: {{ order.companyName }}</h4>
+               <h4>Product: {{ order.product }}</h4>
+               <h4>Quantity: {{ order.quantity }}</h4>
+               <h4>Price: {{ order.amount }} Rs</h4>
+        </div>
+   </div>
+</div>
+{% endif %}
+</body>
+</html>

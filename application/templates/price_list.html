@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Material</title>
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cabin', sans-serif;
+        }
+
+        nav {
+        background: linear-gradient(135deg, #04db65, #04d8db);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+     margin-bottom: 50px;
+      padding: 10px;
+      
+    }
+
+    nav a {
+      text-decoration: none;
+      color:#fff;
+      padding: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    nav a:hover {
+      transform: scale(1.5);
+    }
+
+    .logo {
+      margin-right: auto;
+      background-color: #fff;
+            margin: 5px;
+            margin-right: 20px;
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            cursor: pointer;
+    }
+
+    .links {
+      margin-left:0px 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 2;
+    }
+    
+    .links a {
+      margin-left: 10px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    .right-links {
+      margin-left: auto;
+      cursor: pointer;
+      
+   }
+
+    .right-links a {
+      margin-left: 5px;
+      margin-right: 5px;
+      color:#fff;
+      border-radius: 30px;      
+      transition: transform 0.3s ease;
+    }
+
+    .right-links a:hover {
+        box-shadow: 0px 0px 5px black;
+        transform: scale(1.5);
+        background-color: #04d8db;
+        color: #fff;
+    }
+
+
+        h2 {
+            display: inline-block;
+            margin: 10px 0;
+        }
+
+        .price-block {
+             width: 80%;
+             padding: 5px;
+             height: max-content;
+             margin: auto;
+             align-self: center;
+        }
+       
+       .text-block {
+           margin-top: 100px;
+       }
+        .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+     
+    .dropdown-toggle {
+      text-decoration: none;
+      padding: 10px;
+      display: block;
+      color: red;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    
+    .price-tag {
+      color:#04db65 ;
+    }
+
+    .material-tag{
+      text-decoration: underline;
+      color: #04d8db;
+    }
+
+    .list_view {
+        display: flex;
+        align-items: center;      
+        padding: 5px; /* Optional: Add padding for better spacing */
+    }
+    
+    .list_view h1 {
+        flex: 1; /* Take remaining width */
+          
+    }
+
+    .list_view img {
+        width: auto; /* Set the width to make the image smaller */
+        height: 150px; /* Maintain aspect ratio */
+       
+          }
+    </style>
+</head>
+<body>
+  <nav>
+    <div >
+      <a href="{% url 'home' %}"><img src="{% static 'images/Dailelogo.png' %}" class="logo" alt="Logo" ></a>
+    </div>
+    
+    <div class="links">
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'price_list' %}">Price</a>
+      <a href="{% url 'order_entry' %}">Place Order</a>
+      <a href="{% url 'task_page' %}">Track</a>
+      <a href="#">Partners</a>
+    </div>
+
+    <div class="right-links">
+      <a href="#" >Sign Up</a>
+      <a href="#" >Login</a>
+    </div>
+  </nav>
+    
+    <div class="price-block">
+    <h2>Select the Material</h2>
+    <div class="dropdown">
+        <h2  class="dropdown-toggle">Tap here</h2>
+        <div class="dropdown-menu">
+            {% for item in items %}
+          <a href="{% url 'price_list_update' pk=item.pk %}">{{ item.material }}</a>
+             {% endfor %}
+        
+        </div>
+      </div>
+
+
+<div class="list_view">
+    <h1>You can earn <span class="price-tag">Rs {{ material.price }}  </span> from <span class="material-tag">{{ material.material }}</span>  </h1>
+    <img src="{{ material.ItemImage.url }}" alt="{{ material.material }}">
+  </div>
+   
+  <div class="text-block">
+    <p>The waste like  cardboard boxes , glass , plastic , wood , steel packaging's are thrown away, without much thought about their impact on the environment. 
+    However, it's important to realize that these waste materials can have a serious negative impact on the planet. </p>
+      <p>Plastic, for instance, can take hundreds of years to decompose and can pollute our oceans and harm wildlife.
+      Cardboard boxes and paper can contribute to deforestation and the loss of important animal habitats. Glass, if not recycled properly, can also take up space in landfills and contribute to pollution. Steel and wood packagings can also have a harmful impact on the environment if not disposed of properly. By being more mindful about the waste we produce and taking steps to reduce, reuse, and recycle, we can help protect our planet for future generations.</p>
+  </div>
+</div>
+</body>
+</html>

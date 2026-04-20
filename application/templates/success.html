@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Congratulations!</title>
+    <style>
+         @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+        body {
+            
+            background: linear-gradient(to bottom, #4CAF50, #45a049);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Cabin', sans-serif;
+        }
+
+        .congrats-container {
+            text-align: center;
+            color: #fff;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f1c40f;
+            opacity: 0.8;
+            animation: confetti-fall 4s linear infinite, confetti-flip 4s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+
+        @keyframes confetti-flip {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        a {
+            text-decoration: none;            
+            
+        }
+        a p {
+            color: #4CAF50;
+            background-color: #fff;
+            font-size: 25px;
+            transition: transform 0.3s ease-in-out;
+        }
+        a p:hover{
+            transform: scale(1.2);
+           
+        }
+    </style>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <div class="congrats-container">
+        <h1>Congratulations!</h1>
+        <p>you'r only step  behind to earn {{ amount }} Rs</p>
+        <a href="{%  url 'home' %}"><p>Earn More</p></a>
+    </div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <!-- Add more confetti divs for more animation -->
+    {% else %}
+           <h2> Your not logined  to <a href="{% url 'signin' %}">LogIn</a> </h2>
+           {%  endif %}
+</body>
+</html>

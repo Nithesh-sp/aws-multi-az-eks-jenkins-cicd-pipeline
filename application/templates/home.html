@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Website</title>
+  <style>
+    
+      @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cabin', sans-serif;
+    }
+
+    nav {
+        background: linear-gradient(135deg, #04db65, #04d8db);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+     
+      padding: 10px;
+      
+    }
+
+    nav a {
+      text-decoration: none;
+      color:#fff;
+      padding: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    nav a:hover {
+      transform: scale(1.5);
+    }
+
+    .logo {
+      margin-right: auto;
+      background-color: #fff;
+            margin: 5px;
+            margin-right: 20px;
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+            cursor: pointer;
+    }
+
+    .links {
+      margin-left:0px 100px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 2;
+    }
+    
+    .links a {
+      margin-left: 10px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    .right-links {
+      margin-left: auto;
+      cursor: pointer;
+      
+   }
+
+    .right-links a {
+      margin-left: 5px;
+      margin-right: 5px;
+      color:#fff;
+      border-radius: 30px;      
+      transition: transform 0.3s ease;
+    }
+
+    .right-links a:hover {
+        box-shadow: 0px 0px 5px black;
+        transform: scale(1.5);
+        background-color: #04d8db;
+        color: #fff;
+    }
+
+    /***first block****/
+    .main-block {
+            margin-top:2vh ;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            
+            height: 90vh; 
+        }
+
+        .image-block {
+            flex: 1;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .image-block img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .text-block {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .buttons {
+            margin-top: 10px;
+        }
+
+        .buttons .button {
+            padding: 10px;
+            margin-right: 10px;
+            text-decoration: none;
+            color: black;
+            cursor: pointer;
+        }
+
+        .buttons .buttonen {
+            background-color:#04db65;
+            border: 1px solid black;
+            color: #fff;
+        }
+
+        .buttons .buttonlm {
+           
+            border: 1px solid black;
+        }
+/*****************video***********************************/
+video {
+    width:"100%";
+     height:"80vh";
+     object-fit: cover;
+}
+        /**************block 1*******************/
+        .block1 {
+            background: linear-gradient(135deg, #04db65, #04d8db);
+            color: #fff;
+            }
+        .block1 .text-block {
+            opacity: 0;
+        }
+        .block1:hover .text-block{
+            animation:text-forth 1s ease-out 0s 1 forwards ;
+            opacity: 1;
+        }
+
+        .block1:hover .blockImages {
+            animation: image-zoom 1s ease-out 0s 1 forwards;
+           
+        }
+
+        /**********block 2***************/
+        
+        
+        .block2:hover .blockImages {
+            animation: image-zoom 1s ease-out 0s 1 forwards;
+           
+        }
+          
+        .block2 .text-block {
+            opacity: 0;
+        }
+        .block2:hover .text-block{
+            animation:text-forth 1s ease-out 0s 1 forwards ;
+            opacity: 1;
+        }
+
+         /**********block 3***************/
+         .block3 {
+            background: linear-gradient(135deg, #04db65, #04d8db);
+            color: #fff;
+            }
+         .block3 .text-block{
+            opacity: 0;
+         }
+         .block3:hover .blockImages {
+            animation: image-zoom 1s ease-out 0s 1 forwards;
+            
+        }
+        .block3:hover .text-block{
+            animation:text-forth 1s ease-out 0s 1 forwards ;
+            opacity: 1;
+        }
+
+         /**********block 4***************/
+        
+
+        .block4 .text-block{
+            opacity: 0;
+        }
+
+        .block4:hover .blockImages {
+            animation: image-zoom 1s ease-out 0s 1 forwards;
+           
+        }
+        .block4:hover .text-block{
+            animation:text-forth 1s ease-out 0s 1 forwards ;
+            opacity: 1;
+        }
+
+        /******************image animation*********************************/
+        @keyframes image-zoom {
+            0% {
+               
+                transform: scale(1);
+            }
+            50% {
+                
+                transform: scale(1.2);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+               
+            }
+        }
+        /*****************block images**********************************/
+
+        .blockImages {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            box-shadow: 0px 0px 10px black;
+        }
+
+        /*********************text block*********************************************/
+
+        @keyframes text-forth {
+            0% {
+                
+                transform: translateY(-25%);
+            }
+           
+            100% {
+                
+                transform: translateY(0%);
+               
+            }
+
+        }
+/*********************foooter****************************************************/
+footer {
+            background: linear-gradient(135deg, #04db65, #04d8db);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+           
+            text-align: center;
+            margin-top: 2vh;
+        }
+
+        .upper-half {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-left: auto;
+            margin-bottom: 20px;
+        }
+
+        .copyright {
+            flex: 1;
+        }
+
+        .logo {
+            flex: 1;
+        }
+        .foot-com{
+            display: flex;
+            align-items: center;
+        }
+
+        .sign-in {
+            flex: 1;
+        }
+
+        .lower-half {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .links_one {
+            flex: 1;
+        }
+
+        .logos {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .logos img {
+            max-width: 100%;
+            height: auto;
+            margin-left: 10px;
+            
+        }
+</style>
+</head>
+<body>
+
+  
+
+  <nav>
+    <div >
+      <a href="{% url 'home' %}"><img src="{% static 'images/Dailelogo.png' %}" class="logo" alt="Logo" ></a>
+    </div>
+    
+    <div class="links">
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'price_list' %}">Price</a>
+      <a href="{% url 'order_entry' %}">Place Order</a>
+      <a href="{% url 'task_page' %}">Track</a>
+      <a href="#">Partners</a>
+    </div>
+
+    <div class="right-links">
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'signup' %}">Sign Up</a>
+        <a href="{% url 'signin' %}">Sign In</a>
+    {% endif %}
+    </div>
+  </nav>
+
+  <!-- The rest of your content goes here -->
+ <div class="main-block ">
+             <video autoplay loop muted style="height: 95vh; width: 100vw; object-fit: cover; margin-top: 10px;">
+                <source  src="{%  static  'images/Daile Pay Animation.mp4' %}"  type="video/mp4">
+             </video>
+ </div>
+
+  <div class="main-block block1">
+    <div class="text-block ">
+        <h2>Daile Pay India</h2>
+        <h3>USE - RETURN - EARN</h3>
+        <p>The Key to Sustainable Happiness, Progress, and Balance.</p>
+        <P>In light of the changing world around us, it's crucial to take action to safeguard our planet and guarantee a promising future. That's where Daile comes in – the innovative Sense of Evolution. Daile embodies joy, growth, and harmony, all while advocating for a cleaner environment. Our team is working tirelessly to lay the groundwork for a cleaner world and let everyone breathe clean Daily with Daile.</P>
+        <P>Daile is proudly MADE in INDIA, 
+            Daile is proudly MADE for INDIA.</P>
+        <div class="buttons">
+            <a href="{% url 'order_entry' %}" class="button buttonen">EARN NOW</a>
+            <a href="{% url 'price_list' %}" class="button buttonlm">LEARN MORE</a>
+        </div>
+    </div>
+
+    <div class="image-block">
+        <img src="{% static 'images/WhyUs.jpg' %}" class="blockImages" alt="Image 0">
+    </div>
+    
+   
+</div>
+
+<div class="main-block block2">
+    <div class="image-block">
+        <img src="{% static 'images/Purpose.jpg' %}" class="blockImages" alt="Image 1">
+    </div>
+   
+    <div class="text-block">
+        <h2>PURPOSE</h2>
+        <p>The proliferation of single-use products, and the marketing campaigns that defined them as a transformative modern convenience, has increased exponentially over the last several decades and resulted in a global waste crisis that threatens our oceans, our ecosystems, and 
+            human health. Today less than 10% of all single-use packaging is recycled, leaving the remaining 90% in landfills, incinerated, or discarded and ending up in our oceans..</p>
+    </div>
+    
+</div>
+
+<div class="main-block block3">
+   
+    <div class="text-block">
+        <h2>WHAT WE CAN</h2>
+        <p>By decreasing the amount of repeat manufacturing and reusing old packaging materials, we can greatly reduce the amount of waste generated by our society. </p>
+          <p>  Not only does this help to conserve resources and reduce the carbon footprint of businesses, it also serves as a way to promote sustainability and foster a greener future for generations to come.</p>
+           <p> By taking small steps towards reducing waste and promoting sustainable practices, we can all play a role in creating a more environmentally-friendly world.</p>
+           <p> So let's make a conscious effort to reuse old packaging materials and reduce the amount of waste we generate.</p>
+       
+    </div>
+    <div class="image-block">
+        <img src="{% static 'images/WhatWeCan.jpg' %}" class="blockImages" width="300px" height="300px" alt="Image 1">
+   </div>
+   
+</div>
+
+<div class="main-block block4 ">
+    <div class="image-block">
+        <img src="{% static 'images/Whychooseus.jpg' %}" class="blockImages" width="300px" height="300px" alt="Image 1">
+    </div>
+    <div class="text-block">
+        <h2>WHY CHOOSE US ?</h2>
+        <p>We are different from scrap workers in many of the senses.</p>
+        <p>We are into the business, where we build a community to sustain.</p>
+       <p>We pay per piece not per kilograms.</p>
+       <p>Every company is unable to collect their empty products directly, where Daile is a major platform.</p>
+       <p>We sort and hygine the consumer products at our Daile warehouses.</p>
+    </div>
+   
+   
+</div>
+
+
+<footer>
+    <div class="upper-half">
+        <div class="copyright">
+            &copy; 2023 Daile Pay India
+        </div>
+        <div class="foot-com">
+            <img src="{% static 'images/Dailelogo.png' %}" class="logo" alt="Company Logo" width="100">
+            <h2>Daile Pay India</h2>
+        </div>
+        <div class="logos">
+            <img src="{% static 'images/linkedIn.png' %}" alt="Logo 1" width="50" >
+            <img src="{% static 'images/insta.png' %}" alt="Logo 1" width="50">
+            
+        </div>
+    </div>
+    
+</footer>
+
+</body>
+</html>
