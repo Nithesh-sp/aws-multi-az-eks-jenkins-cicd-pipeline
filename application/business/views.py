@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Company, Product, Order , ItemList , Status 
 from datetime import datetime
-
+from django.http import JsonResponse
 
 def home_page(request):
     return render(request,'home.html')
@@ -120,6 +120,7 @@ def price_list_update(request,pk):
     priceList= ItemList.objects.all()
     return render(request,'price_list.html',{'material':material, 'items':priceList})
 
-
+def health(request):
+    return JsonResponse({"status": "ok"})
 
 
