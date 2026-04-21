@@ -11,5 +11,6 @@ urlpatterns = [
     path('price-update/<int:pk>/',views.price_list_update,name="price_list_update"),
     path('track-order/',views.track_page,name='task_page'),
     path('ordered/',views.ordered_page,name='ordered_page'),
-    path('detailed/<int:pk>/',views.detailed_page,name="detailed_page")
-]
+    path('detailed/<int:pk>/',views.detailed_page,name="detailed_page"),
+    path('health/',views.health,name="health")
+    ]
