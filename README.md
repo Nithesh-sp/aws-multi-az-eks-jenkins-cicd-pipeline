@@ -9,3 +9,5 @@ Cloud-native CI/CD pipeline on AWS EKS leveraging Jenkins (controller + dynamic 
 
 
 ## Step to download and setup environment 
+
+## Pre-requisite
