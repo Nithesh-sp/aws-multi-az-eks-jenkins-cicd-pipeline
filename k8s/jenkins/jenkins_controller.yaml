@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Deployment
+metadata: 
+   name: jenkins-controller
+   namespace: jenkins
+spec: 
+   replica: 1 
+   selector: 
+    matchLabels:
+       app: jenkins
+
+   template: 
+       metadata: 
+          labels: 
+             app: jenkins
+       spec:
+        serviceAccountName: jenkins
+        containers: 
+        - name: jenkins
+          images: jenkins:lts 
+          ports: 
+           - containerPort: 8080
+           - containerPort: 50000
+          volume: 
+             - name: jenkins-home
+               path: /var/jenkins
+
+volumes: 
+ - name: jenkins-home
+   emptyDir: {} 
