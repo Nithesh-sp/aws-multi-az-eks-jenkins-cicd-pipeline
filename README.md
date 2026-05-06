@@ -1,11 +1,10 @@
 # aws-multi-az-eks-jenkins-cicd-pipeline
 
 # Prerequisites
-
-### 1. Docker 
-### 2. Python 3 
-### 3. Django 
-### 4. AWS account
+ 1. Docker 
+ 2. Python 3 
+ 3. Django 
+ 4. AWS account
 
 # Arcthitecture 
 
