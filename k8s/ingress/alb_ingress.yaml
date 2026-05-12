@@ -18,3 +18,10 @@ spec:
                 name: django-service
                 port:
                   number: 80
+          - path: /jenkins
+              pathType: prefix
+            backend:
+              service: 
+                 name: jenkins-service
+                 port:
+                   number: 80 
