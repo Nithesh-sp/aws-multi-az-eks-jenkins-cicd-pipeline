@@ -121,7 +121,7 @@ kubectl apply -f service.yaml
 
 ### 8. Access Jenkins
 
-http://<public-ip>:<nodeport>
+http://\<public-ip\>:\<nodeport\>
 
 ### 9. Create Jenkins Pipeline
 
@@ -135,4 +135,4 @@ Configure stages:
 
 ### 10. Access Application
 
-http://<ALB-DNS or Public IP>
+http://\<ALB-DNS or Public IP\>
